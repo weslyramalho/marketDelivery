@@ -1,24 +1,36 @@
+const Cliente = require("./Cliente")
 
-module.exports = (sequelize, DataType) =>{
-    const Usuario  = sequelize.define('Pessoa',{
-        id_pessoa:{
-            type:DataType.INTERGER,
+module.exports = (sequelize, DataTypes) =>{
+    const Usuario  = sequelize.define('Usuario',{
+        id_usuario:{
+            type:DataTypes.INTEGER,
             primarykey:true,
-            autoIncrement:true
+            autoincrement:true
         },
-        nome: DataType.STRING,
-        sobrenome: DataType.STRING,
+        nome: DataTypes.STRING,
+        sobrenome: DataTypes.STRING,
         email:{
-            type:DataType.STRING,
+            type:DataTypes.STRING,
             allowNull:true
         },
-        senha:DataType.STRING,
-        cpf:DataType.STRING,
-        endereco: DataType.STRING,
-        telefone: DataType.STRING,
+        senha:DataTypes.STRING,
+        cpf:DataTypes.STRING,
+        endereco: DataTypes.STRING,
+        telefone: DataTypes.STRING,
     },{
-        tableName:'pessoa',
+        tableName:'usuario',
         timestamps:false 
     })
+        Usuario.associate = (listaDeModelos)=>{
+        Usuario.belongsTo(listaDeModelos.Gerente,{
+            foreignkey: 'fk_usuario'
+        })
+        Usuario.belongsTo(listaDeModelos.Cliente,{
+            foreignkey: 'fk_usuario'
+        })
+        Usuario.belongsTo(listaDeModelos.Entregador,{
+            foreignkey: 'fk_usuario'
+        })
+    }
     return Usuario;
 }

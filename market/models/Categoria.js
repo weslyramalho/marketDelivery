@@ -1,20 +1,20 @@
 
 const Produto = require("./Produto");
 
-module.exports = (sequelize, DataType) =>{
+module.exports = (sequelize, DataTypes) =>{
     const Categoria  = sequelize.define('Categoria',{
-        id:{
-            type:DataType.INTERGER,
-            primarykey:true,
-            autoIncrement:true
+        id_categoria:{
+            type: DataTypes.INTEGER,
+            primarykey: true,
+            autoincrement: true
         },
-        nome:DataType.STRING,
+        nome: DataTypes.STRING,
         
     },{
         tableName:'categoria',
         timestamps:false 
     })
-    Categoria.associate = (listaDeModelos) => {
+        Categoria.associate = (listaDeModelos) => {
         Categoria.hasMany(listaDeModelos.Produto, {
             foreignkey: 'fk_categoria',
             as:'produtos'
@@ -23,5 +23,5 @@ module.exports = (sequelize, DataType) =>{
 
 
     
-    return categoria;
+    return Categoria;
 }

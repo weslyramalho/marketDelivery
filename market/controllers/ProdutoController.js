@@ -12,7 +12,22 @@ index: async (req, res) => {
             as:categoria,
             model:'Categoria',
             required:true
+        },
+        showProducts: async(req, res)=>{
+            const {id} = req.params;
+
+            const categoria =await Categoria.findOne({
+                where: {
+                    id_categoria:id
+                },
+                include:{
+                    model:Produto,
+                    required:true
+                }
+            })
         }
+
+
     });
     return res.render('produtos', {produtos})
 }

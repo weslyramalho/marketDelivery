@@ -1,28 +1,32 @@
 
-module.exports = (sequelize, DataType) =>{
+module.exports = (sequelize, DataTypes) =>{
     const Produto  = sequelize.define('Produto',{
-        id:{
-            type:DataType.INTERGER,
+        id_produto:{
+            type:DataTypes.INTEGER,
             primarykey:true,
-            autoIncrement:true
+            autoincrement:true
         },
-        nome:DataType.STRING,
-        descricao:DataType.STRING,
-        imagem:DataType.STRING,
-        preco:DataType.DECIMAL,
-        unidade_medida:DataType.STRING,
+        nome:DataTypes.STRING,
+        preco:DataTypes.DECIMAL,
+        unidade_medida:DataTypes.STRING,
         fk_categoria:{           ///pega id da chave estrangueira categoria
-            type:DataType.INTERGER,
+            type:DataTypes.INTEGER,
         }
     },{
         tableName:'produto',
         timestamps:false 
     })
         //falar que produto pertence a uma categoria
-        Produto.associate =(listaDeModelos)=>{
+            Produto.associate =(listaDeModelos)=>{
             Produto.belongsTo(listaDeModelos.Categoria,{
-                foreignkey: 'fk_categoria',
+            foreignkey: 'fk_categoria',
                 as: 'caetgoria'
+            })
+            Produto.hasMany(listaDeModelos.Empresa,{
+                foreignkey: 'fk_produto',
+            })
+            Produto.hasMany(listaDeModelos.Pedido,{
+                foreignkey: 'fk_produto',
             })
     
         }

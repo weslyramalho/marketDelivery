@@ -8,6 +8,26 @@ const UserController = {
         return res.render('usuarios', {users})
 
     },
+
+    create: (req, res)=> {
+        return res.render('cadastroUsuario')
+    },
+    //cadastrar usuario 
+    store: async (req, res)=>{
+        const {nome, sobrenome, email, senha, cpf, endereco, telefone} = req.body;
+
+        await Usuario.create({
+            nome,
+            sobrenome,
+            email,
+            senha,
+            cpf,
+            endereco,
+            telefone
+
+        })
+
+    },
     //Para fazer uma busca de usuario por ID//
     findById: async(req, res)=>{
         let {id} = req.params;
