@@ -9,7 +9,8 @@ var usersRouter = require('./routes/users');
 var produtosRouter = require('./routes/produto');
 var loginRouter = require('./routes/login');
 var vendasRouter = require('./routes/vendas');
-var clientRouter = require('./routes/client')
+var clientRouter = require('./routes/client');
+var logMiddleware = require('./middlewares/logSite');
 
 var app = express();
 
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(logMiddleware);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

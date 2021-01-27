@@ -4,6 +4,8 @@ module.exports = (sequelize, DataTypes) =>{
         nome:DataTypes.STRING,
         preco:DataTypes.DECIMAL,
         unidade_medida:DataTypes.STRING,
+        imag:DataTypes.STRING(100),
+        descricao:DataTypes.STRING,
     },{
         tableName:'product',
         timestamps:false 

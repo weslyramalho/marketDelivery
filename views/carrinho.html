@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de commpras</title>
+</head>
+<body>
+    <header>
+        <h1>Carrinho de compras</h1>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2"> Itens para comprar </th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>  
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="<%= product.imag %>" alt="<%= " name="imag" id="imag" >
+                    </td>
+                    <td>
+                        <%= product.nome %>
+                        <a href="#">Tirar do carrinho</a>
+                    </td>
+                    <td>
+                        <%= product.preco %>
+                    </td>
+                    <td>
+                    <input type="number" value="1"min="0">
+
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2" >Total do Pedido</td>
+                    <td>R$ <%= product.preco %></td>
+                    td
+                </tr>
+            </tfoot>
+        </table>
+    </main>
+</body>
+</html>

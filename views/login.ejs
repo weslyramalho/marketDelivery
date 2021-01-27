@@ -73,15 +73,15 @@
         </ul>
       </div>
       <p class="description description-second">Ou use o seu email para registro:</p>
-      <form class="form">
+      <form class="form" action="/users/login">
         
         <label class="label-input" for="">
           <i class="far fa-envelope icon-modify" ></i>
-        <input type="email" placeholder="Email">
+        <input type="email" placeholder="Email" id="email" name="email">
       </label>
         <label class="label-input" for="">
           <i class="fas fa-lock icon-modify" ></i>
-        <input type="password" placeholder="Senha">
+        <input type="password" placeholder="Senha" id="senha" name="senha">
         <a class="password" href="#">esqueceu sua senha?</a>
       </label>
         <button class="btn btn-second">Enviar</button>

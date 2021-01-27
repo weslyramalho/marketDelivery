@@ -52,7 +52,7 @@
             </div>
         </nav>
        
-        <form action="/produtos/cadastro" method="POST" style="margin-top: 200px;" >
+        <form action="/produtos/cadastro" enctype="multipart/form-data" method="POST" style="margin-top: 200px;" >
         
           <div class="row">
             <div class="col">
@@ -67,6 +67,16 @@
           <div class="form-group">
             <label for="inputUnMd">Unidade de Medida</label>
             <input type="text" class="form-control" placeholder="kg, un" id="unidade_medida" name="unidade_medida">
+          </div>
+
+          <div class="input-group mb-3">
+            <input type="file" class="form-control" id="imag" name="imag">
+            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Descriçao do produto</label>
+            <textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
           </div>
         
           <div class="form-group">

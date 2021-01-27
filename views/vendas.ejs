@@ -52,26 +52,45 @@
                  
             </div>
         </nav>
-        <header class="masthead text-white text-center" style="background-color: #0097A7;" >
-          <div class="container d-flex align-items-center flex-column">
-          
-              
-                     
-          </div>
-      </header>
-       <section>
+    
+       <section style="margin-top: 180px;">
         <main class="container mt-4">
-          <h1>Lista de Vendas</h1>
-          <ul>
-            <% sales.forEach(sales =>{ %>
-              <li>
-                <%= sales.nome %>
-              </li>
+          <h2>Lista de Vendas</h2>
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">ID produto</th>
+                      <th scope="col">ID cliente</th>
+                      <th scope="col">ID pagamento</th>
+                      <th scope="col">Data</th>
+                      <th scope="col">Entrega</th>
+                      <th scope="col">Valor Total</th>
+                      <th scope="col">Ações</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <% sales.forEach(sales =>{ %>
+                    <tr>
+                        <th scope="row"> <%= sales.id %></th>
+                        <th> <%= sales.product_id %></th>
+                        <th> <%= sales.client_id%></th>
+                        <th> <%= sales.payment_id %></th>
+                        <th> <%= sales.data%></th>
+                        <th> <%= sales.entrega %></th>
+                        <th> <%= sales.valor_total %></th>
 
-              <% }); %>
 
-          </ul>
-         
+
+
+
+                    
+                        <th><a href="/vendas/<%=sales.id %>" class="btn btn-primary">Ver Dados</a></th>                    
+                    </tr>
+                    <% }); %>
+
+              </tbody>
+          </table>
 
         </main>
        </section>

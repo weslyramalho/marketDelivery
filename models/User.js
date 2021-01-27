@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) =>{
             type:DataTypes.STRING,
             allowNull:true
         },
+        
         senha:DataTypes.STRING,
         endereco: DataTypes.STRING,
         cpf:DataTypes.STRING,

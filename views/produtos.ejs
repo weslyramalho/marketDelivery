@@ -52,33 +52,51 @@
                  
             </div>
         </nav>
-        <header class="masthead text-white text-center" style="background-color: #0097A7;" >
-          <div class="container d-flex align-items-center flex-column">
-          
+        
+        <section style="margin-top: 180px;">
+            <main class="container mt-4">
+              <h2>Lista de Produtos</h2>
+              <div class="row row-cols-1 row-cols-md-3 g-4">
+              <% products.forEach(products => { %>
+
+                <div class="col">
+
+                <div class="card">
+                    <img src="<%= products.imag %>" class="card-img-top" id="imag" alt="<%= products.imag %>">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= products.nome %></h5> 
+                      <h5 class="card-title"><%= products.preco %></h5>
+                      <h5 class="card-title"><%= products.unidade_medida %></h5>
+                      <p class="card-text"><%= products.descricao %></p>
+                      <a href="#" class="btn btn-primary">comprar</a>
+                      <form action="/produtos/deletar/<%= products.id %>?_method=DELETE" method="post">
+                        <button type="submit" class="btn btn-danger">Exluir</button>
+                    </form>
+                    </div>
+                  </div>
+                </div>
+
+                    <% }) %>
+                </div>
+
+            
+                                
+
+
+                    
+                  
+
+                
               
-                     
-          </div>
-      </header>
-       <section>
-        <main class="container mt-4">
-          <h1>Lista de Produtos</h1>
-          <ul>
-            <% products.forEach(products =>{ %>
-              <li>
-                <%= products.nome %>
-              </li>
-
-              <% }); %>
-
-          </ul>
-         
-
-        </main>
-       </section>
+    
+              
+            </main>
+           </section>
         
                 
         
         <!-- Bootstrap core JS-->
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Third party plugin JS-->

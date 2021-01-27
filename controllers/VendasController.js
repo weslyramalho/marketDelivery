@@ -6,6 +6,9 @@ const VendasController = {
         console.log(sales);
 
         return res.render('vendas', {sales});
+    },
+    selectProduto: async (req, res) => {
+        
     }
 }
 module.exports = VendasController;
