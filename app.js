@@ -7,7 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var produtosRouter = require('./routes/produto');
-var loginRouter = require('./routes/login');
+var authRouter = require('./routes/AuthRouter');
 var vendasRouter = require('./routes/vendas');
 var clientRouter = require('./routes/client');
 var logMiddleware = require('./middlewares/logSite');
@@ -28,7 +28,7 @@ app.use(logMiddleware);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/produtos', produtosRouter);
-app.use('/login', loginRouter);
+app.use('/login', authRouter);
 app.use('/vendas', vendasRouter);
 app.use('/clientes', clientRouter);
 

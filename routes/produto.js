@@ -2,14 +2,16 @@ var express = require('express');
 var router = express.Router();
 const multer = require('multer')
 const path = require('path')
+const VerificarSeTemToken = require('../middlewares/VerificarSeTemToken')
+const ValidarToken = require('../middlewares/ValidaToken')
 const ProdutoController = require('../controllers/ProdutoController')
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, path.join('uploads'))
+      cb(null, path.join('public/images'))
     },
     filename: function (req, file, cb) {
-      cb(null, `${file.fieldname}-${Date.now()}.${path.extname(file.originalname)}`)
+      cb(null, file.originalname)
     }
   })
    

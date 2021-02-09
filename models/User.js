@@ -22,12 +22,7 @@ module.exports = (sequelize, DataTypes) =>{
     })
 
         User.associate = (models) => {
-            User.hasMany(models.Client, {
-                foreignKey: {
-                    name: 'user_id'
-                  }
-            }),
-            User.hasMany(models.Admin,{
+            User.hasMany(models.Client,{
                 foreignKey: {
                     name: 'user_id'
              }

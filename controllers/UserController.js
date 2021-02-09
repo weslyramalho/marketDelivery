@@ -2,13 +2,15 @@ const {User} = require('../models')
 const {check, validationResult, body} = require('express-validator')
 const fs = require('fs')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const config = require('../config/database')
 
 const UserController = {
     index: async (req, res)=>{
         let users = await User.findAll();
         console.log(users)
 
-       return res.render('user', {users})
+       return res.render('client', {users})
         
     },
     create:(req, res)=>{
@@ -28,21 +30,29 @@ const UserController = {
             endereco,
             cpf
         });
-        console.log(resultado) 
-        return res.redirect('/login')
+        res.alert
+        return res.redirect('/')
     },
     logarUsuario: async (req, res)=> {
-        let {email, senha} = req.body;
-        let user = await User.findAll()
+        const {email, senha} = req.body;
+        const user = User.findOne({where: {email}})
 
-        if(email != user.email) {
-            return res.send("usuario ou senha invalida")
-        }
-        if (!bcrypt.compareSync(senha, user.senha)){
-            return res.send("usuario ou senha invalida")
-        }
+    
 
-        res.redirect("/home")
+        if(!user) {
+            return res.status(401).json({error:"usuario/senha invalida"})
+        }
+        const loginOk = await bcrypt.compare(senha, user.senha)
+
+        if(!loginOk) {
+            return res.status(401).json({error: "usuario/senha invalida"})
+        }
+        user.senha = undefined
+
+        //gerar token(jwt)
+        const token = jwt.sign({user}, config.tokenSecret)
+        //enviar token
+        return res.json({user, token})
 
     }
 

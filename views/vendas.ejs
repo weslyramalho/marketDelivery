@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Cadastro de Estabelecimento</title>
+        <title>usuario</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -14,16 +14,15 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        
         <link href="/stylesheets/styles.css" rel="stylesheet" />
-        
+        <link rel="stylesheet" href="/stylesheets/style.css">
     </head>
     <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav" style="background-color: #0097A7; ;">
             <div class="container">
                 <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                    <img src="/images/20201212_202202.png" width="170" height="97" class="d-inline-block align-top" 
+                    <img src="/images/20210203_140053.png" width="170" height="97" class="d-inline-block align-top" 
                    alt="">
                 </a>
                 <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,51 +51,49 @@
                  
             </div>
         </nav>
-    
-       <section style="margin-top: 180px;">
-        <main class="container mt-4">
-          <h2>Lista de Vendas</h2>
-          <table class="table">
-              <thead>
-                  <tr>
-                      <th scope="col">ID</th>
-                      <th scope="col">ID produto</th>
-                      <th scope="col">ID cliente</th>
-                      <th scope="col">ID pagamento</th>
-                      <th scope="col">Data</th>
-                      <th scope="col">Entrega</th>
-                      <th scope="col">Valor Total</th>
-                      <th scope="col">Ações</th>
-                  </tr>
-              </thead>
-              <tbody>
-                <% sales.forEach(sales =>{ %>
-                    <tr>
-                        <th scope="row"> <%= sales.id %></th>
-                        <th> <%= sales.product_id %></th>
-                        <th> <%= sales.client_id%></th>
-                        <th> <%= sales.payment_id %></th>
-                        <th> <%= sales.data%></th>
-                        <th> <%= sales.entrega %></th>
-                        <th> <%= sales.valor_total %></th>
-
-
-
-
-
-                    
-                        <th><a href="/vendas/<%=sales.id %>" class="btn btn-primary">Ver Dados</a></th>                    
-                    </tr>
-                    <% }); %>
-
-              </tbody>
-          </table>
-
-        </main>
-       </section>
+       
+        <form action="/vendas/cadastro" enctype="multipart/form-data" method="POST" style="margin-top: 200px;" >
         
-                
+          <div class="row">
+            <div class="col">
+              <label for="inputNome">Valor Total</label>
+              <input type="text" class="form-control" placeholder="valor_total" id="valor_total" name="valor_total" >
+            </div>
+            <div class="col">
+              <label for="inputPeco">Data</label>
+              <input type="text" class="form-control" placeholder="00000" id="preco" name="preco">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputUnMd">Unidade de Medida</label>
+            <input type="text" class="form-control" placeholder="kg, un" id="unidade_medida" name="unidade_medida">
+          </div>
+
+          <div class="input-group mb-3">
+            <input type="file" class="form-control" id="imag" name="imag">
+            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Descriçao do produto</label>
+            <textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
+          </div>
         
+          <div class="form-group">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck">
+              <label class="form-check-label" for="gridCheck">
+                Clique em mim
+              </label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Entrar</button>
+        </form>
+
+            
+        <!-- Footer-->
+      
+       
         <!-- Bootstrap core JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>

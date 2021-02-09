@@ -3,7 +3,8 @@ const router = express.Router();
 
 const VendasController = require('../controllers/VendasController');
 
-router.get('/', VendasController.index);
+router.get('/cadastro', VendasController.create);
+router.post('/cadastro', VendasController.venda);
 
 
 module.exports = router;

@@ -1,0 +1,60 @@
+body{
+    color: #113157;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 100%;
+    text-shadow: 0.1em 0.1em 0.1em #ddf;
+}
+header, main{
+    width: 1140px;
+    margin:0 auto;
+}
+
+header{
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+h1{
+    color: #851616;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+#tabela-carrinho{
+    width: 100%;
+}
+#tabela-carrinho td{
+    display: table-cell;
+    vertical-align: middle;
+
+}
+#tabela-carrinho th, td{
+    padding: 0.5em;
+    border-bottom: #ccd  1px dotted;
+
+}
+#tabela-carrinho th{
+    font-size: 1em;
+    font-weight: 500;
+    text-align: left;
+}
+.coluna-pequena{
+    width: 8em;
+}
+.nome-produto{
+    font-size: 1.2em;
+    color: #345986;
+    text-decoration: none;
+}
+.preco-produto, .total{
+    color: #cc4444;
+    font-weight: 500;
+}
+.remover-produto{
+    font-size: 0.8em;
+}
+.coluna-capaa{
+    width: 8em;
+
+}
+.capa{
+    height: 7.5em;
+}

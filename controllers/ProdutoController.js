@@ -1,5 +1,5 @@
 const config = require('../config/database')
-const {Product, Sale} = require('../models');
+const {Product, Sale, User} = require('../models');
 const Sequelize = require('sequelize')
 const multer = require('multer')
 const path = require('path')
@@ -9,6 +9,7 @@ const Op = Sequelize.Op
 
 const ProdutoController = {
     index: async (req, res)=>{
+        
         let products = await Product.findAll();
         
         console.log(products)
@@ -17,7 +18,7 @@ const ProdutoController = {
         
     },
     showProducts: async (req, res)=>{
-        const {id} = re.params
+        const {id} = req.params
 
         const product = await Product.findOne({
             where: {
@@ -68,13 +69,12 @@ const ProdutoController = {
             nome,
             preco,
             unidade_medida,
-            imag:files[0].originalname,
+            imag:"/images/" + files[0].originalname,
             descricao,
         });
        
-        console.log(product)
 
-        return res.redirect('/produtos', {product})
+        return res.render('produtos', {product})
     },
     edit: async  (req, res)=> {
         const {id} = req.params
@@ -101,7 +101,7 @@ const ProdutoController = {
                 id: id
             }
         })
-        return res.redirect('/produtos',{id})
+        return res.redirect('produtos',{id})
     },
     destroy: async (req, res)=>{
         const {id} = req.params
@@ -111,7 +111,7 @@ const ProdutoController = {
                 id: id
             }
         })
- res.redirect('/produtos', {id})
+ res.redirect('produtos', {id})
 
     }
 
